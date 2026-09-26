@@ -1,0 +1,19 @@
+uploads = []
+
+[[generated]]
+id = "hd01lCnrYo7PqKN7I5nrQ"
+uri = "file://artifacts/horizon-store/public/hero.png"
+type = "image"
+title = "African inspired premium ecommerce hero"
+
+[[generated]]
+id = "w213huNpo4S9nIBKbqSBj"
+uri = "file://artifacts/horizon-store/public/product-bottle.png"
+type = "image"
+title = "Premium matte water bottle"
+
+[[outputs]]
+id = "29TyInja4M9Q4_xoN5fuH"
+uri = "file://horizon-store.zip"
+type = "unspecified"
+title = "Horizon Store — Full Project"

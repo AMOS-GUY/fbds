@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livraison & Retours | FasoBestDeals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/design-system.css" />
+  <style>
+    body { padding-top: var(--nav-h); background: var(--surface-1); }
+    .page-hero { background: linear-gradient(135deg, var(--brand-sand) 0%, var(--surface-0) 100%); padding: var(--space-16) 0 var(--space-10); border-bottom: 1px solid var(--border); }
+    .info-section { padding: var(--space-14) 0 var(--space-20); }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+    .info-card { background: var(--surface-0); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: var(--space-8); }
+    .info-card-icon { width: 56px; height: 56px; border-radius: var(--radius-lg); background: var(--brand-gold-muted); display: flex; align-items: center; justify-content: center; font-size: var(--text-2xl); color: var(--brand-gold); margin-bottom: var(--space-5); }
+    .info-card h2 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 600; margin-bottom: var(--space-4); }
+    .info-card p, .info-card li { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.8; }
+    .info-card ul { padding-left: var(--space-5); margin: var(--space-4) 0; }
+    .info-card li { margin-bottom: var(--space-2); }
+    .shipping-timeline { display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-6); }
+    .timeline-step { display: flex; gap: var(--space-4); align-items: flex-start; }
+    .step-dot { width: 36px; height: 36px; border-radius: var(--radius-full); background: var(--brand-gold); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--text-sm); flex-shrink: 0; }
+    .step-body strong { display: block; font-size: var(--text-sm); font-weight: 600; margin-bottom: 2px; }
+    .step-body span { font-size: var(--text-xs); color: var(--text-muted); }
+    .shipping-price-table { width: 100%; border-collapse: collapse; margin-top: var(--space-5); }
+    .shipping-price-table th, .shipping-price-table td { padding: var(--space-3) var(--space-4); text-align: left; font-size: var(--text-sm); border-bottom: 1px solid var(--border); }
+    .shipping-price-table th { background: var(--surface-2); font-weight: 700; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); }
+    .shipping-price-table tr:last-child td { border-bottom: none; }
+    .highlight-row { background: var(--brand-gold-muted); }
+    .highlight-row td { color: var(--brand-dark); font-weight: 600; }
+    .steps-list { counter-reset: step-counter; list-style: none; padding: 0; margin-top: var(--space-5); }
+    .steps-list li { counter-increment: step-counter; display: flex; gap: var(--space-3); margin-bottom: var(--space-4); font-size: var(--text-sm); color: var(--text-secondary); }
+    .steps-list li::before { content: counter(step-counter); width: 24px; height: 24px; border-radius: var(--radius-full); background: var(--brand-dark); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .cta-card { background: var(--brand-dark); color: var(--brand-cream); border-radius: var(--radius-xl); padding: var(--space-10) var(--space-8); text-align: center; margin-top: var(--space-8); }
+    .cta-card h3 { font-family: var(--font-display); font-size: var(--text-3xl); margin-bottom: var(--space-3); }
+    .cta-card p { color: rgba(250,246,239,.6); margin-bottom: var(--space-6); }
+    @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="home.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-gem"></i></div> FasoBestDeals</a>
+    <ul class="nav-links" id="navLinks"><li><a href="home.html">Accueil</a></li><li><a href="products.html">Produits</a></li><li><a href="contact-us.html">Contact</a></li></ul>
+    <div class="nav-actions"><a href="login.html" class="nav-auth-btn" id="navAuthBtn"><i class="fas fa-sign-in-alt"></i><span>Connexion</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button></div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label">Service</div>
+    <h1 style="font-family:var(--font-display);font-size:var(--text-5xl);font-weight:600;letter-spacing:-.03em;margin-top:var(--space-2);">Livraison & Retours</h1>
+    <p style="color:var(--text-secondary);margin-top:var(--space-4);">Tout ce que vous devez savoir sur la livraison et notre politique de retour.</p>
+  </div>
+</section>
+
+<section class="info-section">
+  <div class="container">
+    <div class="info-grid">
+      <!-- Shipping -->
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fas fa-shipping-fast"></i></div>
+        <h2>Informations de livraison</h2>
+        <p>Nous livrons directement depuis la Chine vers le Burkina Faso. Voici comment ça fonctionne :</p>
+        <div class="shipping-timeline">
+          <div class="timeline-step"><div class="step-dot">1</div><div class="step-body"><strong>Confirmation (1–2 jours)</strong><span>Votre commande est vérifiée et le paiement validé.</span></div></div>
+          <div class="timeline-step"><div class="step-dot">2</div><div class="step-body"><strong>Préparation (2–5 jours)</strong><span>Votre colis est préparé et emballé par notre partenaire en Chine.</span></div></div>
+          <div class="timeline-step"><div class="step-dot">3</div><div class="step-body"><strong>Expédition (10–15 jours)</strong><span>Votre colis est en transit. Un numéro de suivi vous est envoyé.</span></div></div>
+          <div class="timeline-step"><div class="step-dot">4</div><div class="step-body"><strong>Livraison (1–2 jours)</strong><span>Livraison à votre adresse au Burkina Faso.</span></div></div>
+        </div>
+
+        <table class="shipping-price-table">
+          <thead><tr><th>Montant commande</th><th>Frais livraison</th><th>Délai</th></tr></thead>
+          <tbody>
+            <tr><td>0 – 24 999 CFA</td><td>2 000 CFA</td><td>15–20 jours</td></tr>
+            <tr class="highlight-row"><td>25 000 CFA et +</td><td>🎉 Gratuite</td><td>15–20 jours</td></tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:var(--space-5);padding:var(--space-4);background:var(--brand-gold-muted);border-radius:var(--radius-lg);font-size:var(--text-sm);color:var(--text-secondary);">
+          <i class="fas fa-map-marker-alt" style="color:var(--brand-gold);margin-right:6px;"></i>
+          <strong>Zones desservies :</strong> Ouagadougou, Bobo-Dioulasso, Koudougou, Banfora et principales villes. Contactez-nous pour les zones rurales.
+        </div>
+      </div>
+
+      <!-- Returns -->
+      <div class="info-card">
+        <div class="info-card-icon"><i class="fas fa-undo-alt"></i></div>
+        <h2>Politique de retour</h2>
+        <p>Votre satisfaction est notre priorité. Si vous n'êtes pas satisfait, nous acceptons les retours dans les <strong>30 jours</strong> suivant la réception.</p>
+
+        <p style="margin-top:var(--space-4);font-weight:600;font-size:var(--text-sm);">Conditions de retour :</p>
+        <ul>
+          <li>Article non utilisé, dans son état d'origine</li>
+          <li>Emballage d'origine intact</li>
+          <li>Demande initiée dans les 30 jours</li>
+          <li>Preuve d'achat (numéro de commande)</li>
+        </ul>
+
+        <p style="margin-top:var(--space-4);font-weight:600;font-size:var(--text-sm);">Articles non retournables :</p>
+        <ul>
+          <li>Articles personnalisés ou sur mesure</li>
+          <li>Produits hygiéniques déballés</li>
+          <li>Articles endommagés par l'acheteur</li>
+        </ul>
+
+        <p style="margin-top:var(--space-5);font-weight:600;font-size:var(--text-sm);">Comment initier un retour :</p>
+        <ol class="steps-list">
+          <li>Contactez-nous via WhatsApp ou email en indiquant votre numéro de commande</li>
+          <li>Nous vous envoyons les instructions et l'adresse de retour sous 24h</li>
+          <li>Expédiez l'article à vos frais (ou les nôtres en cas de défaut)</li>
+          <li>Remboursement sous 5–7 jours ouvrables après réception</li>
+        </ol>
+
+        <div style="margin-top:var(--space-5);padding:var(--space-4);background:rgba(45,106,79,.08);border-radius:var(--radius-lg);font-size:var(--text-sm);color:var(--brand-green);">
+          <i class="fas fa-check-circle" style="margin-right:6px;"></i>
+          <strong>Garantie défaut :</strong> Si votre article arrive endommagé ou défectueux, nous prenons en charge tous les frais de retour et de remplacement.
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-card">
+      <h3>Une question sur votre livraison ?</h3>
+      <p>Notre équipe est disponible 6 jours sur 7 pour vous aider.</p>
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+        <a href="track-order.html" class="btn btn-primary btn-lg"><i class="fas fa-map-marker-alt"></i> Suivre ma commande</a>
+        <a href="contact-us.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,.3);color:white;"><i class="fas fa-headset"></i> Contacter le support</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2026 FasoBestDeals. Tous droits réservés.</p><div class="footer-bottom-links"><a href="privacy.html">Confidentialité</a><a href="terms.html">CGU</a><a href="shipping.html">Livraison</a></div></div></div></footer>
+<script src="../scripts/core.js"></script>
+</body>
+</html>

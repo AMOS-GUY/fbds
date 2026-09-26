@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | Horizon Store</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .auth-container {
+        width: 100%;
+        max-width: 500px;
+      }
+      .auth-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+      .auth-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .auth-header .logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+      .auth-header .logo i {
+        color: rgb(141, 210, 233);
+        margin-right: 8px;
+      }
+      .auth-header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+      }
+      .auth-header p {
+        color: #666;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+      }
+      .form-group label i {
+        color: rgb(141, 210, 233);
+        margin-right: 8px;
+      }
+      .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.95rem;
+      }
+      .form-group input:focus {
+        outline: none;
+        border-color: rgb(141, 210, 233);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .auth-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, rgb(141, 210, 233), lightblue);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      .auth-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(141, 210, 233, 0.4);
+      }
+      .auth-footer {
+        text-align: center;
+        margin-top: 25px;
+        color: #666;
+      }
+      .auth-footer a {
+        color: rgb(141, 210, 233);
+        text-decoration: none;
+      }
+      .toast-notification {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: white;
+        padding: 12px 20px;
+        border-radius: 10px;
+        display: none;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+      .toast-notification.show {
+        display: flex;
+        animation: slideIn 0.3s ease;
+      }
+      .toast-notification.success {
+        border-left: 4px solid #28a745;
+      }
+      .toast-notification.error {
+        border-left: 4px solid #dc3545;
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      @media (max-width: 480px) {
+        .auth-card {
+          padding: 25px;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="logo">
+            <i class="fas fa-leaf"></i>
+            <span>Horizon</span>
+          </div>
+          <h1>Create Account</h1>
+          <p>Join us for exclusive deals</p>
+        </div>
+
+        <form id="signupForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label><i class="fas fa-user"></i> First Name</label>
+              <input type="text" id="firstName" required />
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-user"></i> Last Name</label>
+              <input type="text" id="lastName" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="email" required />
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Phone Number</label>
+            <input type="tel" id="phone" />
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-lock"></i> Password</label>
+            <input type="password" id="password" required />
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-check-circle"></i> Confirm Password</label>
+            <input type="password" id="confirmPassword" required />
+          </div>
+
+          <button type="submit" class="auth-btn">
+            <i class="fas fa-user-plus"></i> Create Account
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-notification" id="toastNotification">
+      <i class="fas fa-check-circle"></i>
+      <span>Message</span>
+    </div>
+
+    <script>
+      const USERS_KEY = "horizon_users";
+      const CURRENT_USER_KEY = "horizon_current_user";
+
+      function getUsers() {
+        const users = localStorage.getItem(USERS_KEY);
+        return users ? JSON.parse(users) : [];
+      }
+
+      function saveUsers(users) {
+        localStorage.setItem(USERS_KEY, JSON.stringify(users));
+      }
+
+      function showToast(message, type = "success") {
+        const toast = document.getElementById("toastNotification");
+        const icon = toast.querySelector("i");
+        const span = toast.querySelector("span");
+
+        if (type === "success") {
+          icon.className = "fas fa-check-circle";
+          toast.style.borderLeftColor = "#28a745";
+        } else {
+          icon.className = "fas fa-exclamation-circle";
+          toast.style.borderLeftColor = "#dc3545";
+        }
+
+        span.textContent = message;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3000);
+      }
+
+      document.getElementById("signupForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+
+        if (!firstName || !lastName || !email || !password) {
+          showToast("Please fill in all required fields", "error");
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          showToast("Passwords do not match", "error");
+          return;
+        }
+
+        if (password.length < 6) {
+          showToast("Password must be at least 6 characters", "error");
+          return;
+        }
+
+        const users = getUsers();
+        if (users.find((u) => u.email === email)) {
+          showToast("An account with this email already exists", "error");
+          return;
+        }
+
+        const newUser = {
+          id: "user_" + Date.now(),
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          phone: phone || "",
+          password: password,
+          createdAt: new Date().toISOString(),
+          status: "active",
+        };
+
+        users.push(newUser);
+        saveUsers(users);
+
+        sessionStorage.setItem(CURRENT_USER_KEY, JSON.stringify(newUser));
+
+        showToast("Account created successfully! Redirecting...", "success");
+
+        // Try multiple redirect paths
+        setTimeout(() => {
+          // First try to go to home.html in same folder
+          window.location.href = "home.html";
+        }, 1500);
+      });
+
+      // Debug info
+      console.log("Current page URL:", window.location.href);
+      console.log("Attempting to redirect to: home.html");
+    </script>
+  </body>
+</html>

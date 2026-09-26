@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <title>My Account | Horizon Store</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/account.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-container">
+        <div class="logo"><i class="fas fa-leaf"></i> Horizon</div>
+        <div class="mobile-menu" id="mobileMenuToggle">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="account-container">
+      <div class="account-sidebar">
+        <div class="user-profile">
+          <div class="user-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <h3 id="userName">Loading...</h3>
+          <p id="userEmail">loading@email.com</p>
+        </div>
+        <nav class="account-nav">
+          <a href="#" class="nav-link active" data-tab="dashboard">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+          <a href="#" class="nav-link" data-tab="orders">
+            <i class="fas fa-shopping-bag"></i> My Orders
+          </a>
+          <a href="#" class="nav-link" data-tab="profile">
+            <i class="fas fa-user"></i> Profile Settings
+          </a>
+          <a href="#" class="nav-link" data-tab="addresses">
+            <i class="fas fa-map-marker-alt"></i> Addresses
+          </a>
+          <a href="#" class="nav-link" data-tab="wishlist">
+            <i class="fas fa-heart"></i> Wishlist
+          </a>
+          <a href="#" class="nav-link logout-link" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
+        </nav>
+      </div>
+
+      <div class="account-content">
+        <!-- Dashboard Tab -->
+        <div id="dashboardTab" class="tab-content active">
+          <h2>Welcome back, <span id="welcomeName">User</span>!</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <i class="fas fa-shopping-bag"></i>
+              <div>
+                <h3 id="totalOrders">0</h3>
+                <p>Total Orders</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-dollar-sign"></i>
+              <div>
+                <h3 id="totalSpent">$0</h3>
+                <p>Total Spent</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h3 id="pendingOrders">0</h3>
+                <p>Pending Orders</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="recent-orders">
+            <h3>Recent Orders</h3>
+            <div class="orders-list" id="recentOrdersList">
+              <p>No orders yet. <a href="products.html">Start shopping!</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders Tab -->
+        <div id="ordersTab" class="tab-content">
+          <h2>My Orders</h2>
+          <div class="orders-filter">
+            <label for="orderStatusFilter" class="visually-hidden"
+              >Order status</label
+            >
+            <select id="orderStatusFilter">
+              <option value="all">All Orders</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="shipped">Shipped</option>
+              <option value="delivered">Delivered</option>
+            </select>
+          </div>
+          <div class="orders-list" id="allOrdersList">
+            <p>Loading orders...</p>
+          </div>
+        </div>
+
+        <!-- Profile Tab -->
+        <div id="profileTab" class="tab-content">
+          <h2>Profile Settings</h2>
+          <form id="profileForm" class="profile-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profileFirstName">First Name</label>
+                <input type="text" id="profileFirstName" required />
+              </div>
+              <div class="form-group">
+                <label for="profileLastName">Last Name</label>
+                <input type="text" id="profileLastName" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="profileEmail">Email Address</label>
+              <input type="email" id="profileEmail" required />
+            </div>
+            <div class="form-group">
+              <label for="profilePhone">Phone Number</label>
+              <input type="tel" id="profilePhone" />
+            </div>
+            <button type="submit" class="auth-btn">Update Profile</button>
+          </form>
+        </div>
+
+        <!-- Addresses Tab -->
+        <div id="addressesTab" class="tab-content">
+          <h2>My Addresses</h2>
+          <button class="btn-add-address" id="addAddressBtn">
+            <i class="fas fa-plus"></i> Add New Address
+          </button>
+          <div class="addresses-list" id="addressesList">
+            <p>No addresses saved yet.</p>
+          </div>
+        </div>
+
+        <!-- Wishlist Tab -->
+        <div id="wishlistTab" class="tab-content">
+          <h2>My Wishlist</h2>
+          <div class="wishlist-grid" id="wishlistGrid">
+            <p>
+              Your wishlist is empty.
+              <a href="products.html">Browse products!</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Address Modal -->
+    <div
+      id="addressModal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="addressModalTitle"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="addressModalTitle">Add New Address</h3>
+          <button class="modal-close" aria-label="Close address modal">
+            &times;
+          </button>
+        </div>
+        <form id="addressForm">
+          <div class="form-group">
+            <label for="addressName">Full Name</label>
+            <input type="text" id="addressName" required />
+          </div>
+          <div class="form-group">
+            <label for="addressStreet">Street Address</label>
+            <input type="text" id="addressStreet" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="addressCity">City</label>
+              <input type="text" id="addressCity" required />
+            </div>
+            <div class="form-group">
+              <label for="addressPostal">Postal Code</label>
+              <input type="text" id="addressPostal" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="addressCountry">Country</label>
+            <select id="addressCountry">
+              <option>Rwanda</option>
+              <option>Kenya</option>
+              <option>Uganda</option>
+              <option>Tanzania</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="addressPhone">Phone Number</label>
+            <input type="tel" id="addressPhone" required />
+          </div>
+          <button type="submit" class="auth-btn">Save Address</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/account.js"></script>
+  </body>
+</html>

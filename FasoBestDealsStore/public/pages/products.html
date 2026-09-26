@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:;"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <!-- <meta http-equiv="X-Frame-Options" content="DENY" /> -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <title>Products | Horizon Store</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/products.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <div class="logo"><i class="fas fa-leaf"></i> Horizon</div>
+        <button
+          type="button"
+          id="mobileMenuToggle"
+          class="mobile-menu"
+          aria-controls="navLinks"
+          aria-expanded="false"
+          aria-label="Toggle menu"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+          <li>
+            <a href="#" id="demoAlertBtn" class="cta-btn">Get Started</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Cart Sidebar -->
+    <div
+      class="cart-sidebar"
+      id="cartSidebar"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cartTitle"
+      tabindex="-1"
+    >
+      <div class="cart-sidebar-header">
+        <h2 id="cartTitle"><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+        <button class="close-cart" id="closeCartBtn" aria-label="Close cart">
+          &times;
+        </button>
+      </div>
+      <div class="cart-sidebar-content" id="cartSidebarContent">
+        <div class="empty-cart">
+          <i class="fas fa-shopping-bag"></i>
+          <p>Your cart is empty</p>
+          <button class="btn-primary" id="continueShoppingBtn">
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+      <div class="cart-sidebar-footer" id="cartFooter" style="display: none">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cartTotalAmount">$0</span>
+        </div>
+        <button class="btn-checkout" id="checkoutBtn">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <h1>Our Premium Collection</h1>
+        <p>Discover our curated selection of high-quality products</p>
+        <div class="cart-icon-container">
+          <button class="cart-icon-btn" id="cartIconBtn">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+      <div class="container">
+        <div class="filters-wrapper">
+          <div class="search-filter">
+            <i class="fas fa-search"></i>
+            <label for="searchProducts" class="visually-hidden"
+              >Search products</label
+            >
+            <input
+              type="text"
+              id="searchProducts"
+              placeholder="Search products..."
+            />
+          </div>
+          <div class="category-filter">
+            <label for="categoryFilter" class="visually-hidden"
+              >Filter by category</label
+            >
+            <select id="categoryFilter">
+              <option value="all">All Categories</option>
+              <option value="Bottles">Bottles</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Gear">Gear</option>
+            </select>
+          </div>
+          <div class="sort-filter">
+            <select id="sortFilter">
+              <option value="default">Sort by</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section">
+      <div class="container">
+        <div class="products-header">
+          <h2><i class="fas fa-box"></i> All Products</h2>
+          <div class="products-count" id="productsCount">
+            Showing 0 products
+          </div>
+        </div>
+        <div class="products-grid" id="productsGrid">
+          <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading products...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div
+      class="toast-notification"
+      id="toastNotification"
+      role="alert"
+      aria-live="polite"
+    >
+      <i class="fas fa-check-circle"></i>
+      <span>Product added to cart!</span>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-links">
+          <a href="home.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact-us.html">Contact</a>
+          <a href="#">Privacy</a>
+        </div>
+        <p>
+          © 2026 Horizon — modern storytelling. Crafted with
+          <i class="fas fa-coffee"></i>
+        </p>
+      </div>
+    </footer>
+
+    <script src="../scripts/products.js"></script>
+  </body>
+</html>

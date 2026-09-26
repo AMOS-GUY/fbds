@@ -1,0 +1,125 @@
+<!--<!doctype html>
+<html>
+  <head>
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="input-container">
+      <input type="text" class="message-input message-input-js" />
+      <button class="send-button send-button-js">Send</button>
+    </div>
+    <div class="chat-display chat-display-js"></div>
+    <div class="user-message">
+      <div class="user-input"></div>
+      <img src="../media/user.png" alt="" size="50" class="sender-image" />
+    </div>
+    <div class="user-message">
+      <img src="../media/robot.png" alt="" size="50" class="sender-image" />
+      <div class="robot-answer-js" class="robot-answer"></div>
+    </div>
+
+     <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function ChatInput() {
+        return (
+          <>
+            <input
+              placeholder="Send a message to chatbot"
+              size="25"
+              class="message-input"
+            />
+            <button class="send-button send-button-js">Send</button>
+          </>
+        );
+      }
+      function ChatMessage({ message, sender }) {
+        //function ChatMessage(props){...}
+        //const message = props.message;
+        //const sender = props.sender;
+        //const { message, user } = props;
+
+        /*if (sender === "robot") {
+          return (
+            <div>
+              <img src="robot.png" alt="" width="50" />
+              {message}
+            </div>
+          );
+        }*/
+
+        return (
+          <div>
+            {sender === "robot" && <img src="robot.png" alt="" width="50" />}
+            {message}
+            {sender === "user" && <img src="user.png" alt="" width="50" />}
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <ChatInput />
+            <ChatMessage message="hello chatbot" sender="user" />
+            <ChatMessage message="Hello! How can I help you?" sender="robot" />
+            <ChatMessage message="Can you get me todays date?" sender="user" />
+            <ChatMessage message="Today is April 3" sender="robot" />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script> 
+
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>
+-->
+
+<!doctype html>
+<html>
+  <head>
+    <title>Chatbot</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-header">
+        <h2>AI Chatbot Assistant</h2>
+        <div class="status">Online</div>
+      </div>
+
+      <div class="chat-display chat-display-js">
+        <div class="welcome-message">
+          <div class="user-message bot-message">
+            <img src="../media/robot.png" alt="Robot" class="sender-image" />
+            <div class="message-bubble">
+              Hello! I'm your AI assistant. How can I help you today?
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <input
+          type="text"
+          class="message-input message-input-js"
+          placeholder="Type your message here..."
+          autocomplete="off"
+        />
+        <button class="send-button send-button-js">Send</button>
+      </div>
+    </div>
+
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>
+
+<!-- sk-5ab4d0ea5aa7444e94da1b7907ffd789 -->

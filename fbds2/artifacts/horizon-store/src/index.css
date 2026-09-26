@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --button-outline: rgba(0,0,0, .10);
+  --badge-outline: rgba(0,0,0, .05);
+
+  --opaque-button-border-intensity: -8;
+
+  --elevate-1: rgba(0,0,0, .03);
+  --elevate-2: rgba(0,0,0, .08);
+
+  /* Warm elegant African premium theme */
+  --background: 40 20% 98%;
+  --foreground: 30 10% 10%;
+  
+  --border: 30 10% 85%;
+  --input: 30 10% 85%;
+  --ring: 20 60% 45%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 30 10% 10%;
+  --card-border: 30 10% 90%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 30 10% 10%;
+  --popover-border: 30 10% 90%;
+
+  --primary: 20 60% 45%;
+  --primary-foreground: 40 20% 98%;
+
+  --secondary: 30 15% 20%;
+  --secondary-foreground: 40 20% 98%;
+
+  --muted: 30 10% 94%;
+  --muted-foreground: 30 10% 40%;
+
+  --accent: 35 40% 90%;
+  --accent-foreground: 20 60% 30%;
+
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --app-font-sans: "Geist", "Inter", sans-serif;
+  --app-font-serif: "Playfair Display", Georgia, serif;
+  --app-font-mono: "Space Mono", monospace;
+  
+  --radius: 0.25rem;
+}
+
+.dark {
+  --button-outline: rgba(255,255,255, .10);
+  --badge-outline: rgba(255,255,255, .05);
+
+  --opaque-button-border-intensity: 9;
+
+  --elevate-1: rgba(255,255,255, .04);
+  --elevate-2: rgba(255,255,255, .09);
+
+  --background: 30 15% 8%;
+  --foreground: 40 20% 95%;
+  
+  --border: 30 10% 20%;
+  --input: 30 10% 20%;
+  --ring: 20 50% 55%;
+
+  --card: 30 15% 10%;
+  --card-foreground: 40 20% 95%;
+  --card-border: 30 10% 15%;
+
+  --popover: 30 15% 10%;
+  --popover-foreground: 40 20% 95%;
+  --popover-border: 30 10% 15%;
+
+  --primary: 20 50% 55%;
+  --primary-foreground: 30 15% 8%;
+
+  --secondary: 40 20% 90%;
+  --secondary-foreground: 30 15% 10%;
+
+  --muted: 30 10% 15%;
+  --muted-foreground: 40 10% 60%;
+
+  --accent: 30 30% 15%;
+  --accent-foreground: 20 50% 65%;
+
+  --destructive: 0 60% 45%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}

@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>Admin Dashboard - Horizon</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:;
+        img-src 'self' data: https: http:;
+        connect-src 'self' https:;
+        frame-src 'self';
+      "
+    />
+    <!-- <meta 
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;"
+    />-->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <!-- <meta http-equiv="X-Frame-Options" content="DENY" /> -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <link rel="stylesheet" href="admin.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  </head>
+
+  <body>
+    <div class="admin-container">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <i class="fas fa-leaf"></i>
+          <h2>Horizon Admin</h2>
+          <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item" data-page="dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-item" data-page="orders">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Orders</span>
+            <span class="badge" id="orderCount">0</span>
+          </a>
+          <a href="#" class="nav-item" data-page="customers">
+            <i class="fas fa-users"></i>
+            <span>Customers</span>
+            <span class="badge" id="customerCount">0</span>
+          </a>
+          <a href="#" class="nav-item" data-page="products">
+            <i class="fas fa-box"></i>
+            <span>Products</span>
+            <span class="badge" id="productCount">0</span>
+          </a>
+          <a href="#" class="nav-item" data-page="analytics">
+            <i class="fas fa-chart-line"></i>
+            <span>Analytics</span>
+          </a>
+          <a href="#" class="nav-item" data-page="settings">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+          <a href="#" class="nav-item" data-page="security">
+            <i class="fas fa-shield-alt"></i>
+            <span>Security</span>
+            <span class="badge" id="securityBadge">0</span>
+          </a>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="whatsapp-status">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp Connected</span>
+            <span class="status-dot online"></span>
+          </div>
+          <button class="logout-btn" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="main-header">
+          <div class="header-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search..." id="globalSearch" />
+          </div>
+          <div class="header-actions">
+            <button class="btn-refresh" id="refreshData">
+              <i class="fas fa-sync-alt"></i>
+            </button>
+            <div class="notification-bell">
+              <i class="fas fa-bell"></i>
+              <span class="notification-badge" id="notificationBadge">0</span>
+            </div>
+            <div class="user-menu">
+              <img
+                src="../../public/media/Weixin_Image_20260403232458_2008_1-removebg-preview.png"
+                alt="Admin"
+              />
+              <span>Admin</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page-content">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+              <div class="stat-info">
+                <h3>Total Orders</h3>
+                <p id="dashboardTotalOrders">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+              <div class="stat-info">
+                <h3>Total Revenue</h3>
+                <p id="dashboardTotalRevenue">$0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-users"></i></div>
+              <div class="stat-info">
+                <h3>Total Customers</h3>
+                <p id="dashboardTotalCustomers">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="stat-info">
+                <h3>Conversion Rate</h3>
+                <p id="dashboardConversion">0%</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Orders -->
+          <div class="recent-orders">
+            <h3>Recent Orders</h3>
+            <div class="recent-orders-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="recentOrdersBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders Page -->
+        <div id="ordersPage" class="page-content" style="display: none">
+          <div class="orders-header">
+            <h2><i class="fas fa-shopping-cart"></i> Order Management</h2>
+            <button class="btn-primary" id="exportOrdersBtn">
+              <i class="fas fa-download"></i> Export Orders
+            </button>
+          </div>
+
+          <div class="orders-stats">
+            <div class="stat-card-mini">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h4>Pending</h4>
+                <p id="pendingOrdersCount">0</p>
+              </div>
+            </div>
+            <div class="stat-card-mini">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <h4>Confirmed</h4>
+                <p id="confirmedOrdersCount">0</p>
+              </div>
+            </div>
+            <div class="stat-card-mini">
+              <i class="fas fa-truck"></i>
+              <div>
+                <h4>Shipped</h4>
+                <p id="shippedOrdersCount">0</p>
+              </div>
+            </div>
+            <div class="stat-card-mini">
+              <i class="fas fa-chart-line"></i>
+              <div>
+                <h4>Revenue</h4>
+                <p id="ordersTotalRevenue">$0</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="orders-filters">
+            <div class="filter-group">
+              <label>Status:</label>
+              <select id="orderStatusFilter">
+                <option value="all">All Orders</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="shipped">Shipped</option>
+                <option value="delivered">Delivered</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Date:</label>
+              <select id="orderDateFilter">
+                <option value="all">All Time</option>
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Search:</label>
+              <input
+                type="text"
+                id="orderSearch"
+                placeholder="Order ID or Customer..."
+              />
+            </div>
+          </div>
+
+          <div class="orders-table-container">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  <th>Customer</th>
+                  <th>Phone</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <tr>
+                  <td colspan="8" class="loading">Loading orders...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination" id="ordersPagination">
+            <button class="page-btn" id="prevOrdersPage">Previous</button>
+            <span id="ordersPageInfo">Page 1 of 1</span>
+            <button class="page-btn" id="nextOrdersPage">Next</button>
+          </div>
+        </div>
+
+        <!-- Customers Page -->
+        <div id="customersPage" class="page-content" style="display: none">
+          <div class="customers-header">
+            <h2><i class="fas fa-users"></i> Customer Management</h2>
+            <button class="btn-primary" id="exportCustomersBtn">
+              <i class="fas fa-download"></i> Export CSV
+            </button>
+          </div>
+
+          <div class="customers-table-container">
+            <table class="customers-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Orders</th>
+                  <th>Total Spent</th>
+                  <th>Last Order</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <tr>
+                  <td colspan="7" class="loading">Loading customers...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analyticsPage" class="page-content" style="display: none">
+          <h2><i class="fas fa-chart-line"></i> Analytics Dashboard</h2>
+
+          <div class="analytics-filters">
+            <select id="analyticsPeriod">
+              <option value="7">Last 7 days</option>
+              <option value="30" selected>Last 30 days</option>
+              <option value="90">Last 90 days</option>
+              <option value="365">Last year</option>
+            </select>
+          </div>
+
+          <div class="charts-grid">
+            <div class="chart-card">
+              <h3>Revenue Trend</h3>
+              <canvas id="revenueChart"></canvas>
+            </div>
+            <div class="chart-card">
+              <h3>Orders by Status</h3>
+              <canvas id="orderStatusChart"></canvas>
+            </div>
+            <div class="chart-card">
+              <h3>Top Products</h3>
+              <canvas id="topProductsChart"></canvas>
+            </div>
+            <div class="chart-card">
+              <h3>Customer Growth</h3>
+              <canvas id="customerGrowthChart"></canvas>
+            </div>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <i class="fas fa-chart-line"></i>
+              <div>
+                <h4>Conversion Rate</h4>
+                <p id="conversionRate">0%</p>
+              </div>
+            </div>
+            <div class="metric-card">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h4>Avg Order Value</h4>
+                <p id="avgOrderValue">$0</p>
+              </div>
+            </div>
+            <div class="metric-card">
+              <i class="fas fa-repeat"></i>
+              <div>
+                <h4>Repeat Rate</h4>
+                <p id="repeatRate">0%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== ADD PRODUCTS PAGE HERE (BEFORE SETTINGS) ========== -->
+        <!-- Products Page -->
+        <div id="productsPage" class="page-content" style="display: none">
+          <div class="products-header">
+            <h2><i class="fas fa-box"></i> Product Management</h2>
+            <a href="../products.html" class="btn-primary" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Open Product Manager
+            </a>
+          </div>
+
+          <div class="products-stats">
+            <div class="stat-card-mini">
+              <i class="fas fa-box"></i>
+              <div>
+                <h4>Total Products</h4>
+                <p id="adminTotalProducts">0</p>
+              </div>
+            </div>
+            <div class="stat-card-mini">
+              <i class="fas fa-tag"></i>
+              <div>
+                <h4>Categories</h4>
+                <p id="adminTotalCategories">0</p>
+              </div>
+            </div>
+            <div class="stat-card-mini">
+              <i class="fas fa-exclamation-triangle"></i>
+              <div>
+                <h4>Low Stock</h4>
+                <p id="adminLowStockCount">0</p>
+              </div>
+            </div>
+            <div class="stat-card-mini">
+              <i class="fas fa-dollar-sign"></i>
+              <div>
+                <h4>Inventory Value</h4>
+                <p id="adminInventoryValue">$0</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="products-table-container">
+            <div class="table-header">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input
+                  type="text"
+                  id="adminProductSearch"
+                  placeholder="Search products..."
+                />
+              </div>
+              <button class="btn-refresh" id="refreshProductsBtn">
+                <i class="fas fa-sync-alt"></i> Refresh
+              </button>
+            </div>
+
+            <table class="products-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody id="adminProductsTableBody">
+                <tr>
+                  <td colspan="8" class="loading">Loading products...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settingsPage" class="page-content" style="display: none">
+          <h2><i class="fas fa-cog"></i> System Settings</h2>
+
+          <div class="settings-grid">
+            <div class="settings-card">
+              <h3><i class="fab fa-whatsapp"></i> WhatsApp Integration</h3>
+              <div class="setting-item">
+                <label>WhatsApp Number</label>
+                <input
+                  type="text"
+                  id="whatsappNumber"
+                  placeholder="+22667030730"
+                  value="22667030730"
+                />
+              </div>
+              <div class="setting-item">
+                <label>CallMeBot API Key</label>
+                <input
+                  type="text"
+                  id="callmebotApiKey"
+                  placeholder="3316810"
+                  value="3316810"
+                />
+              </div>
+              <button class="btn-primary" id="testWhatsAppBtn">
+                Test Connection
+              </button>
+            </div>
+
+            <div class="settings-card">
+              <h3><i class="fab fa-whatsapp"></i> WhatsApp Integration</h3>
+              <div class="setting-item">
+                <label>WhatsApp Number</label>
+                <input
+                  type="text"
+                  id="whatsappNumber"
+                  placeholder="+250792854755"
+                />
+              </div>
+              <div class="setting-item">
+                <label>CallMeBot API Key</label>
+                <input type="text" id="callmebotApiKey" placeholder="7838696" />
+              </div>
+              <button class="btn-primary" id="testWhatsAppBtn">
+                Test Connection
+              </button>
+            </div>
+
+            <div class="settings-card">
+              <h3><i class="fas fa-database"></i> Backup & Export</h3>
+              <button class="btn-secondary" id="exportAllDataBtn">
+                <i class="fas fa-download"></i> Export All Data
+              </button>
+              <button class="btn-secondary" id="importDataBtn">
+                <i class="fas fa-upload"></i> Import Data
+              </button>
+              <button class="btn-danger" id="clearDataBtn">
+                <i class="fas fa-trash"></i> Clear All Data
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Security Page -->
+        <div id="securityPage" class="page-content" style="display: none">
+          <div class="security-header">
+            <h2><i class="fas fa-shield-alt"></i> Security Dashboard</h2>
+            <p>Monitor system security and audit logs</p>
+          </div>
+
+          <div class="security-stats">
+            <div class="stat-card-mini">
+              <i class="fas fa-shield-virus"></i>
+              <div>
+                <h4>Status</h4>
+                <p id="securityStatus">-</p>
+              </div>
+            </div>
+            <div class="stat-card-mini">
+              <i class="fas fa-history"></i>
+              <div>
+                <h4>Events</h4>
+                <p id="totalAuditEvents">0</p>
+              </div>
+            </div>
+            <div class="stat-card-mini">
+              <i class="fas fa-exclamation-triangle"></i>
+              <div>
+                <h4>Warnings</h4>
+                <p id="totalWarnings">0</p>
+              </div>
+            </div>
+            <div class="stat-card-mini">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h4>Last Check</h4>
+                <p id="lastSecurityCheck">-</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="security-tabs">
+            <button class="sec-tab-btn active" data-tab="audit">
+              Audit Log
+            </button>
+            <button class="sec-tab-btn" data-tab="backup">Backup</button>
+            <button class="sec-tab-btn" data-tab="scan">Security Scan</button>
+          </div>
+
+          <!-- Audit Tab -->
+          <div id="auditTab" class="sec-tab-content active">
+            <div class="audit-controls">
+              <input
+                type="text"
+                id="auditSearch"
+                placeholder="Search audit logs..."
+                style="flex: 1; padding: 8px"
+              />
+              <select id="severityFilter">
+                <option value="all">All</option>
+                <option value="info">Info</option>
+                <option value="warning">Warning</option>
+                <option value="critical">Critical</option>
+              </select>
+              <button id="exportAuditBtn" class="btn-secondary">Export</button>
+              <button id="clearAuditBtn" class="btn-secondary">Clear</button>
+            </div>
+            <div style="overflow-x: auto">
+              <table class="audit-table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Action</th>
+                    <th>Severity</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody id="auditLogBody">
+                  <tr>
+                    <td colspan="4" class="loading">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Backup Tab -->
+          <div id="backupTab" class="sec-tab-content">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+              "
+            >
+              <div class="backup-card">
+                <i class="fas fa-database"></i>
+                <h3>Backup Database</h3>
+                <button id="backupDatabaseBtn" class="btn-primary">
+                  Create Backup
+                </button>
+              </div>
+              <div class="backup-card">
+                <i class="fas fa-upload"></i>
+                <h3>Restore Database</h3>
+                <input type="file" id="restoreFile" style="display: none" />
+                <button id="restoreDatabaseBtn" class="btn-secondary">
+                  Restore Backup
+                </button>
+              </div>
+              <div class="backup-card">
+                <i class="fas fa-history"></i>
+                <h3>Backup History</h3>
+                <div id="backupHistoryList">No backups</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security Scan Tab -->
+          <div id="scanTab" class="sec-tab-content">
+            <div style="text-align: center; padding: 30px">
+              <i
+                class="fas fa-shield-alt"
+                style="font-size: 48px; color: var(--primary-main)"
+              ></i>
+              <h3>System Security Scan</h3>
+              <button
+                id="runSecurityScanBtn"
+                class="btn-primary"
+                style="margin: 20px 0"
+              >
+                Run Security Scan
+              </button>
+              <div id="scanResults" style="display: none; text-align: left">
+                <h4>Results:</h4>
+                <div id="scanResultsList"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Order Details</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body" id="orderDetailsContent"></div>
+      </div>
+    </div>
+
+    <!-- Customer Details Modal -->
+    <div id="customerModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Customer Details</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body" id="customerDetailsContent"></div>
+      </div>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal">
+      <div class="modal-content modal-lg">
+        <div class="modal-header">
+          <h2><i class="fas fa-edit"></i> Edit Product</h2>
+          <span class="close close-edit-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form id="editProductForm">
+            <input type="hidden" id="editProductId" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Product Name *</label>
+                <input type="text" id="editProductName" required />
+              </div>
+              <div class="form-group">
+                <label>Category *</label>
+                <select id="editProductCategory" required>
+                  <option value="Bottles">Bottles</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Gear">Gear</option>
+                  <option value="Apparel">Apparel</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Price (USD) *</label>
+                <input
+                  type="number"
+                  id="editProductPrice"
+                  step="0.01"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Stock Quantity *</label>
+                <input type="number" id="editProductStock" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <textarea id="editProductDescription" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Image URL</label>
+              <input
+                type="text"
+                id="editProductImage"
+                placeholder="../media/your-image.jpg"
+              />
+              <div
+                class="image-preview-container"
+                id="editImagePreview"
+                style="display: none"
+              >
+                <img
+                  id="editPreviewImg"
+                  src=""
+                  alt="Preview"
+                  style="max-width: 100px; margin-top: 10px; border-radius: 8px"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Sizes Available</label>
+              <div class="sizes-group">
+                <label><input type="checkbox" value="XS" /> XS</label>
+                <label><input type="checkbox" value="S" /> S</label>
+                <label><input type="checkbox" value="M" /> M</label>
+                <label><input type="checkbox" value="L" /> L</label>
+                <label><input type="checkbox" value="XL" /> XL</label>
+                <label
+                  ><input type="checkbox" value="One Size" /> One Size</label
+                >
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Save Changes</button>
+              <button type="button" class="btn-secondary close-edit-modal">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

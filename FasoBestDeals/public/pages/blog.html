@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <title>Blog | FasoBestDeals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/design-system.css" />
+  <style>
+    body { padding-top: var(--nav-h); background: var(--surface-1); }
+    .page-hero { background: linear-gradient(135deg, var(--brand-sand) 0%, var(--surface-0) 100%); padding: var(--space-16) 0 var(--space-10); border-bottom: 1px solid var(--border); }
+    .blog-layout { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-10); padding: var(--space-12) 0 var(--space-20); align-items: start; }
+    /* Featured post */
+    .featured-post { background: var(--surface-0); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; margin-bottom: var(--space-8); cursor: pointer; transition: var(--ease); }
+    .featured-post:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .featured-img { width: 100%; height: 320px; object-fit: cover; background: var(--brand-gold-muted); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+    .featured-body { padding: var(--space-7); }
+    .post-cat { display: inline-block; padding: 3px 12px; border-radius: var(--radius-full); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; background: var(--brand-gold-muted); color: var(--brand-gold); margin-bottom: var(--space-4); }
+    .post-title { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: 600; line-height: 1.2; margin-bottom: var(--space-3); }
+    .post-excerpt { color: var(--text-secondary); font-size: var(--text-base); line-height: 1.7; margin-bottom: var(--space-5); }
+    .post-meta { display: flex; align-items: center; gap: var(--space-5); font-size: var(--text-xs); color: var(--text-muted); }
+    .post-meta-item { display: flex; align-items: center; gap: var(--space-2); }
+    /* Grid posts */
+    .posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
+    .post-card { background: var(--surface-0); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; cursor: pointer; transition: var(--ease); }
+    .post-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+    .post-card-img { width: 100%; height: 180px; object-fit: cover; background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+    .post-card-body { padding: var(--space-5); }
+    .post-card-title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; line-height: 1.3; margin: var(--space-3) 0 var(--space-3); }
+    .post-card-excerpt { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-4); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    /* Sidebar */
+    .sidebar-card { background: var(--surface-0); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: var(--space-6); margin-bottom: var(--space-5); }
+    .sidebar-title { font-weight: 700; font-size: var(--text-base); margin-bottom: var(--space-5); padding-bottom: var(--space-3); border-bottom: 1px solid var(--border); }
+    .sidebar-search { display: flex; gap: var(--space-2); }
+    .sidebar-search input { flex: 1; padding: var(--space-3); border: 1.5px solid var(--border); border-radius: var(--radius); font-size: var(--text-sm); outline: none; transition: var(--ease); }
+    .sidebar-search input:focus { border-color: var(--brand-gold); }
+    .category-tag { display: inline-flex; align-items: center; justify-content: space-between; width: 100%; padding: var(--space-3) 0; border-bottom: 1px solid var(--border); font-size: var(--text-sm); cursor: pointer; transition: var(--ease); color: var(--text-secondary); }
+    .category-tag:last-child { border-bottom: none; }
+    .category-tag:hover { color: var(--brand-gold); padding-left: var(--space-2); }
+    .category-tag .count { font-size: 11px; background: var(--surface-2); padding: 1px 8px; border-radius: var(--radius-full); color: var(--text-muted); }
+    .recent-post { display: flex; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: var(--ease); }
+    .recent-post:last-child { border-bottom: none; }
+    .recent-post:hover .recent-post-title { color: var(--brand-gold); }
+    .recent-post-img { width: 60px; height: 60px; border-radius: var(--radius); background: var(--surface-2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+    .recent-post-title { font-size: var(--text-sm); font-weight: 500; line-height: 1.4; transition: var(--ease); }
+    .recent-post-date { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+    .newsletter-sidebar { background: var(--brand-dark); color: var(--brand-cream); border-radius: var(--radius-xl); padding: var(--space-6); }
+    .newsletter-sidebar h3 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-3); }
+    .newsletter-sidebar p { font-size: var(--text-sm); color: rgba(250,246,239,.6); margin-bottom: var(--space-4); }
+    .newsletter-sidebar input { width: 100%; padding: var(--space-3) var(--space-4); border-radius: var(--radius-full); border: none; font-size: var(--text-sm); margin-bottom: var(--space-3); outline: none; }
+    .newsletter-sidebar button { width: 100%; }
+    @media (max-width: 900px) { .blog-layout { grid-template-columns: 1fr; } .posts-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="home.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-gem"></i></div> FasoBestDeals</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="home.html">Accueil</a></li><li><a href="products.html">Produits</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li><li><a href="contact-us.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="nav-auth-btn" id="navAuthBtn"><i class="fas fa-sign-in-alt"></i><span>Connexion</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label">Actualités</div>
+    <h1 style="font-family:var(--font-display);font-size:var(--text-5xl);font-weight:600;letter-spacing:-.03em;margin-top:var(--space-2);">Notre Blog</h1>
+    <p style="color:var(--text-secondary);margin-top:var(--space-4);font-size:var(--text-lg);">Conseils, guides et actualités sur nos produits et la livraison.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="blog-layout">
+    <main>
+      <!-- Featured post -->
+      <div class="featured-post" onclick="openPost(0)">
+        <div class="featured-img">🌍</div>
+        <div class="featured-body">
+          <span class="post-cat">Guide</span>
+          <h2 class="post-title">Comment choisir une bouteille inox de qualité ? Notre guide complet</h2>
+          <p class="post-excerpt">Les bouteilles inox sont devenues incontournables pour un mode de vie sain et éco-responsable. Découvrez nos critères de sélection pour choisir la meilleure bouteille adaptée à votre usage quotidien...</p>
+          <div class="post-meta">
+            <div class="post-meta-item"><i class="fas fa-user"></i> Équipe FasoBestDeals</div>
+            <div class="post-meta-item"><i class="fas fa-calendar"></i> 10 mai 2026</div>
+            <div class="post-meta-item"><i class="fas fa-clock"></i> 5 min de lecture</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Posts grid -->
+      <div class="posts-grid">
+        <div class="post-card" onclick="openPost(1)">
+          <div class="post-card-img">📦</div>
+          <div class="post-card-body">
+            <span class="post-cat">Livraison</span>
+            <h3 class="post-card-title">Comment fonctionne notre processus d'expédition ?</h3>
+            <p class="post-card-excerpt">De la commande à la livraison à votre porte à Ouagadougou : toutes les étapes expliquées en détail pour que vous sachiez exactement où en est votre colis.</p>
+            <div class="post-meta">
+              <div class="post-meta-item"><i class="fas fa-calendar"></i> 5 mai 2026</div>
+              <div class="post-meta-item"><i class="fas fa-clock"></i> 3 min</div>
+            </div>
+          </div>
+        </div>
+        <div class="post-card" onclick="openPost(2)">
+          <div class="post-card-img">🔒</div>
+          <div class="post-card-body">
+            <span class="post-cat">Conseils</span>
+            <h3 class="post-card-title">5 conseils pour sécuriser vos achats en ligne au Burkina Faso</h3>
+            <p class="post-card-excerpt">Acheter en ligne en toute sécurité est crucial. Voici les bonnes pratiques pour protéger vos données et votre argent lors de vos achats sur internet.</p>
+            <div class="post-meta">
+              <div class="post-meta-item"><i class="fas fa-calendar"></i> 28 avril 2026</div>
+              <div class="post-meta-item"><i class="fas fa-clock"></i> 4 min</div>
+            </div>
+          </div>
+        </div>
+        <div class="post-card" onclick="openPost(3)">
+          <div class="post-card-img">♻️</div>
+          <div class="post-card-body">
+            <span class="post-cat">Environnement</span>
+            <h3 class="post-card-title">Pourquoi passer aux produits éco-responsables ?</h3>
+            <p class="post-card-excerpt">Les produits réutilisables réduisent les déchets plastiques et sont économiques sur le long terme. Découvrez notre gamme écologique.</p>
+            <div class="post-meta">
+              <div class="post-meta-item"><i class="fas fa-calendar"></i> 20 avril 2026</div>
+              <div class="post-meta-item"><i class="fas fa-clock"></i> 4 min</div>
+            </div>
+          </div>
+        </div>
+        <div class="post-card" onclick="openPost(4)">
+          <div class="post-card-img">💳</div>
+          <div class="post-card-body">
+            <span class="post-cat">Paiement</span>
+            <h3 class="post-card-title">Guide complet du paiement mobile au Burkina Faso</h3>
+            <p class="post-card-excerpt">Orange Money, MTN MoMo, Moov Money : tout savoir sur les options de paiement mobile disponibles et comment les utiliser sur FasoBestDeals.</p>
+            <div class="post-meta">
+              <div class="post-meta-item"><i class="fas fa-calendar"></i> 15 avril 2026</div>
+              <div class="post-meta-item"><i class="fas fa-clock"></i> 6 min</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside>
+      <div class="sidebar-card">
+        <div class="sidebar-title">🔍 Rechercher</div>
+        <div class="sidebar-search">
+          <input type="text" placeholder="Rechercher un article…" id="blogSearch" />
+          <button class="btn btn-dark btn-sm"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">📂 Catégories</div>
+        <div class="category-tag">Guide <span class="count">3</span></div>
+        <div class="category-tag">Livraison <span class="count">2</span></div>
+        <div class="category-tag">Conseils <span class="count">4</span></div>
+        <div class="category-tag">Environnement <span class="count">2</span></div>
+        <div class="category-tag">Paiement <span class="count">1</span></div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">📰 Articles récents</div>
+        <div class="recent-post" onclick="openPost(0)">
+          <div class="recent-post-img">🌍</div>
+          <div><div class="recent-post-title">Choisir une bouteille inox de qualité</div><div class="recent-post-date">10 mai 2026</div></div>
+        </div>
+        <div class="recent-post" onclick="openPost(1)">
+          <div class="recent-post-img">📦</div>
+          <div><div class="recent-post-title">Notre processus d'expédition expliqué</div><div class="recent-post-date">5 mai 2026</div></div>
+        </div>
+        <div class="recent-post" onclick="openPost(3)">
+          <div class="recent-post-img">♻️</div>
+          <div><div class="recent-post-title">Passer aux produits éco-responsables</div><div class="recent-post-date">20 avril 2026</div></div>
+        </div>
+      </div>
+      <div class="newsletter-sidebar">
+        <h3>📬 Newsletter</h3>
+        <p>Recevez nos nouveaux articles directement dans votre boîte email.</p>
+        <input type="email" id="blogNewsletter" placeholder="votre@email.com" />
+        <button class="btn btn-primary" onclick="subscribeBlog()" style="width:100%;">S'abonner</button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+<a href="https://wa.me/22600000000" class="whatsapp-fab" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2026 FasoBestDeals. Tous droits réservés.</p></div></div></footer>
+
+<script src="../scripts/core.js"></script>
+<script>
+(function() {
+  'use strict';
+  window.openPost = (id) => Toast.show('Article complet bientôt disponible !', 'info');
+  window.subscribeBlog = () => {
+    const email = document.getElementById('blogNewsletter').value.trim();
+    if (!Security.validateEmail(email)) { Toast.show('Email invalide.', 'error'); return; }
+    Toast.show('Abonnement confirmé ! 🎉');
+    document.getElementById('blogNewsletter').value = '';
+  };
+  document.getElementById('blogSearch').addEventListener('keydown', e => {
+    if (e.key === 'Enter') Toast.show('Recherche disponible prochainement.', 'info');
+  });
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400), { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditions d'Utilisation | FasoBestDeals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/design-system.css" />
+  <style>
+    body { padding-top: var(--nav-h); background: var(--surface-1); }
+    .page-hero { background: linear-gradient(135deg, var(--brand-sand) 0%, var(--surface-0) 100%); padding: var(--space-16) 0 var(--space-10); border-bottom: 1px solid var(--border); }
+    .legal-layout { display: grid; grid-template-columns: 240px 1fr; gap: var(--space-10); padding: var(--space-12) 0 var(--space-20); align-items: start; }
+    .legal-nav { position: sticky; top: calc(var(--nav-h) + var(--space-4)); background: var(--surface-0); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+    .legal-nav-item { display: block; padding: var(--space-3) var(--space-5); font-size: var(--text-sm); color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: var(--ease); }
+    .legal-nav-item:last-child { border-bottom: none; }
+    .legal-nav-item:hover { background: var(--brand-gold-muted); color: var(--brand-gold); padding-left: var(--space-6); }
+    .legal-content { background: var(--surface-0); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: var(--space-10); }
+    .legal-content h2 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 600; margin: var(--space-8) 0 var(--space-4); padding-top: var(--space-6); border-top: 1px solid var(--border); }
+    .legal-content h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .legal-content p { font-size: var(--text-base); color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4); }
+    .legal-content ul { padding-left: var(--space-6); margin-bottom: var(--space-4); }
+    .legal-content li { font-size: var(--text-base); color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-2); }
+    .legal-content strong { color: var(--text-primary); }
+    .legal-highlight { background: var(--brand-gold-muted); border-left: 3px solid var(--brand-gold); border-radius: 0 var(--radius) var(--radius) 0; padding: var(--space-4) var(--space-5); margin: var(--space-5) 0; font-size: var(--text-sm); color: var(--text-secondary); }
+    .legal-date { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--surface-2); border-radius: var(--radius-full); padding: var(--space-2) var(--space-4); font-size: var(--text-xs); color: var(--text-muted); margin-bottom: var(--space-6); }
+    @media (max-width: 768px) { .legal-layout { grid-template-columns: 1fr; } .legal-nav { position: static; display: flex; overflow-x: auto; } .legal-nav-item { border-bottom: none; border-right: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="home.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-gem"></i></div> FasoBestDeals</a>
+    <ul class="nav-links" id="navLinks"><li><a href="home.html">Accueil</a></li><li><a href="products.html">Produits</a></li><li><a href="contact-us.html">Contact</a></li></ul>
+    <div class="nav-actions"><a href="login.html" class="nav-auth-btn" id="navAuthBtn"><i class="fas fa-sign-in-alt"></i><span>Connexion</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button></div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label">Légal</div>
+    <h1 style="font-family:var(--font-display);font-size:var(--text-5xl);font-weight:600;letter-spacing:-.03em;margin-top:var(--space-2);">Conditions d'Utilisation</h1>
+    <p style="color:var(--text-secondary);margin-top:var(--space-4);">Règles régissant l'utilisation de FasoBestDeals.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="legal-layout">
+    <nav class="legal-nav">
+      <a href="#acceptation" class="legal-nav-item">1. Acceptation</a>
+      <a href="#compte" class="legal-nav-item">2. Compte utilisateur</a>
+      <a href="#commandes" class="legal-nav-item">3. Commandes</a>
+      <a href="#paiement" class="legal-nav-item">4. Paiement</a>
+      <a href="#livraison" class="legal-nav-item">5. Livraison</a>
+      <a href="#retours" class="legal-nav-item">6. Retours</a>
+      <a href="#propriete" class="legal-nav-item">7. Propriété</a>
+      <a href="#responsabilite" class="legal-nav-item">8. Responsabilité</a>
+    </nav>
+    <div class="legal-content">
+      <div class="legal-date"><i class="fas fa-calendar"></i> Dernière mise à jour : 1er mai 2026</div>
+      <div class="legal-highlight">En utilisant FasoBestDeals, vous acceptez l'intégralité des présentes conditions. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre service.</div>
+
+      <h2 id="acceptation">1. Acceptation des conditions</h2>
+      <p>Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation du site FasoBestDeals. En créant un compte ou en passant une commande, vous reconnaissez avoir lu, compris et accepté ces conditions.</p>
+
+      <h2 id="compte">2. Compte utilisateur</h2>
+      <p>Pour passer commande, vous devez créer un compte. Vous êtes responsable de :</p>
+      <ul>
+        <li>La confidentialité de vos identifiants de connexion</li>
+        <li>Toutes les activités réalisées depuis votre compte</li>
+        <li>L'exactitude des informations fournies lors de l'inscription</li>
+      </ul>
+      <p>FasoBestDeals se réserve le droit de suspendre ou supprimer tout compte en cas d'utilisation frauduleuse ou contraire aux présentes CGU.</p>
+
+      <h2 id="commandes">3. Commandes et prix</h2>
+      <p>Toute commande passée sur FasoBestDeals constitue un contrat d'achat ferme. Nous nous réservons le droit de refuser ou d'annuler une commande en cas de :</p>
+      <ul>
+        <li>Rupture de stock imprévisible</li>
+        <li>Erreur de prix manifeste sur le site</li>
+        <li>Suspicion de fraude ou d'utilisation abusive</li>
+      </ul>
+      <p>Les prix affichés sont en Francs CFA (XOF) et incluent toutes les taxes applicables. Les frais de livraison sont indiqués séparément avant la confirmation de commande.</p>
+
+      <h2 id="paiement">4. Paiement</h2>
+      <p>Nous acceptons les modes de paiement suivants : Orange Money, MTN MoMo, Moov Money et le paiement en espèces à la livraison. En cas d'échec de paiement, votre commande sera annulée automatiquement après 24 heures.</p>
+      <div class="legal-highlight">Nous ne stockons aucune information bancaire ou de carte de paiement sur nos serveurs.</div>
+
+      <h2 id="livraison">5. Livraison</h2>
+      <p>Les délais de livraison indiqués (15–20 jours ouvrables) sont des estimations et peuvent varier selon les conditions douanières ou logistiques. FasoBestDeals ne peut être tenu responsable des retards causés par des facteurs extérieurs.</p>
+
+      <h2 id="retours">6. Retours et remboursements</h2>
+      <p>Vous disposez de <strong>30 jours</strong> après la réception pour retourner un article, sous réserve que :</p>
+      <ul>
+        <li>L'article soit dans son état d'origine, non utilisé</li>
+        <li>L'emballage d'origine soit intact</li>
+        <li>Vous ayez contacté notre support avant le retour</li>
+      </ul>
+      <p>Les articles personnalisés, alimentaires ou hygiéniques ne sont pas remboursables sauf défaut de fabrication.</p>
+
+      <h2 id="propriete">7. Propriété intellectuelle</h2>
+      <p>L'ensemble des contenus du site FasoBestDeals (textes, images, logos, design) est protégé par les lois sur la propriété intellectuelle. Toute reproduction sans autorisation préalable est interdite.</p>
+
+      <h2 id="responsabilite">8. Limitation de responsabilité</h2>
+      <p>FasoBestDeals s'engage à fournir un service de qualité mais ne peut garantir un accès ininterrompu au site. Notre responsabilité est limitée au montant de la commande concernée. Nous déclinons toute responsabilité pour les dommages indirects.</p>
+
+      <p style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--border);font-size:var(--text-sm);color:var(--text-muted);">Pour toute question : <a href="mailto:legal@fasobestdeals.com" style="color:var(--brand-gold);">legal@fasobestdeals.com</a></p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2026 FasoBestDeals. Tous droits réservés.</p><div class="footer-bottom-links"><a href="privacy.html">Confidentialité</a><a href="terms.html">CGU</a></div></div></div></footer>
+<script src="../scripts/core.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:;"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <!-- <meta http-equiv="X-Frame-Options" content="DENY" /> -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <title>Blog | Design Insights & Stories</title>
+    <!-- Font Awesome 6 (free icons) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="blog-header">
+        <h1>✨ The Narrative Log</h1>
+        <p>
+          Insights on design, branding, and creative strategies — fresh
+          perspectives for modern creators.
+        </p>
+      </div>
+      <!-- dynamic blog grid injected here -->
+      <div class="blog-grid" id="blogGrid"></div>
+    </div>
+
+    <!-- Modal for full article view -->
+    <div id="blogModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">Blog Title</h2>
+          <button class="close-modal" id="closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-meta" id="modalMeta"></div>
+          <p id="modalDesc"></p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="../scripts/blog.js"></script>
+  </body>
+</html>

@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:;"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <!-- <meta http-equiv="X-Frame-Options" content="DENY" /> -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <title>Horizon | Premium Products Store</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/home.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <div class="logo">
+          <i class="fas fa-leaf"></i>
+          <span>Horizon</span>
+        </div>
+        <div class="mobile-menu" id="mobileMenuToggle">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+          <li>
+            <a href="#" id="demoAlertBtn" class="cta-btn">Get Started</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <span class="hero-badge">Welcome to Horizon</span>
+            <h1>
+              Premium Quality Products for
+              <span class="highlight">Modern Living</span>
+            </h1>
+            <p>
+              Discover our curated collection of high-quality products designed
+              to elevate your everyday experience. Shop with confidence and
+              enjoy exclusive deals.
+            </p>
+            <div class="hero-buttons">
+              <a href="products.html" class="btn-primary">Shop Now</a>
+              <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <h3>10K+</h3>
+                <p>Happy Customers</p>
+              </div>
+              <div class="stat">
+                <h3>500+</h3>
+                <p>Products</p>
+              </div>
+              <div class="stat">
+                <h3>24/7</h3>
+                <p>Support</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img
+              src="../media/Weixin Image_20260429234409_2462_1.jpg"
+              alt="Hero"
+              onerror="
+                this.src =
+                  'https://placehold.co/500x500/e0e0e0/666?text=Horizon'
+              "
+            />
+            <div class="floating-card card-1">
+              <i class="fas fa-truck"></i>
+              <span>Free Shipping</span>
+            </div>
+            <div class="floating-card card-2">
+              <i class="fas fa-shield-alt"></i>
+              <span>Secure Payment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Why Choose Us</span>
+          <h2>We Provide Best Features</h2>
+          <p>
+            Experience the difference with Horizon's exceptional service and
+            quality
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shipping-fast"></i>
+            </div>
+            <h3>Free Delivery</h3>
+            <p>
+              Free shipping on all orders over $50. Fast and reliable delivery
+              to your doorstep.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-undo-alt"></i>
+            </div>
+            <h3>30 Days Return</h3>
+            <p>
+              Not satisfied? Return within 30 days for a full refund. No
+              questions asked.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <h3>Secure Payment</h3>
+            <p>
+              Your payments are safe and secure with our encrypted payment
+              system.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>24/7 Support</h3>
+            <p>
+              Our customer support team is available around the clock to assist
+              you.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Our Collection</span>
+          <h2>Featured Products</h2>
+          <p>Discover our most popular and highly-rated products</p>
+        </div>
+        <div class="products-slider" id="featuredProducts">
+          <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading products...</p>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="products.html" class="btn-outline"
+            >View All Products <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner">
+      <div class="container">
+        <div class="promo-content">
+          <div class="promo-text">
+            <span class="promo-badge">Limited Time Offer</span>
+            <h2>Summer Sale!</h2>
+            <p>
+              Get up to <span class="discount">40% off</span> on selected items
+            </p>
+            <a href="products.html" class="btn-primary"
+              >Shop Sale <i class="fas fa-tags"></i
+            ></a>
+          </div>
+          <div class="promo-timer" id="timer">
+            <div class="timer-block">
+              <span id="days">00</span>
+              <label>Days</label>
+            </div>
+            <div class="timer-block">
+              <span id="hours">00</span>
+              <label>Hours</label>
+            </div>
+            <div class="timer-block">
+              <span id="minutes">00</span>
+              <label>Minutes</label>
+            </div>
+            <div class="timer-block">
+              <span id="seconds">00</span>
+              <label>Seconds</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Shop by Category</span>
+          <h2>Browse Categories</h2>
+          <p>Find exactly what you're looking for</p>
+        </div>
+        <div class="categories-grid">
+          <div class="category-card" data-category="Bottles">
+            <div class="category-icon">
+              <i class="fas fa-tint"></i>
+            </div>
+            <h3>Bottles</h3>
+            <p>Eco-friendly water bottles</p>
+            <a href="products.html?category=Bottles">Shop Now →</a>
+          </div>
+          <div class="category-card" data-category="Accessories">
+            <div class="category-icon">
+              <i class="fas fa-mug-hot"></i>
+            </div>
+            <h3>Accessories</h3>
+            <p>Premium accessories</p>
+            <a href="products.html?category=Accessories">Shop Now →</a>
+          </div>
+          <div class="category-card" data-category="Gear">
+            <div class="category-icon">
+              <i class="fas fa-hiking"></i>
+            </div>
+            <h3>Gear</h3>
+            <p>Outdoor & travel gear</p>
+            <a href="products.html?category=Gear">Shop Now →</a>
+          </div>
+          <div class="category-card" data-category="Apparel">
+            <div class="category-icon">
+              <i class="fas fa-tshirt"></i>
+            </div>
+            <h3>Apparel</h3>
+            <p>Stylish clothing</p>
+            <a href="products.html?category=Apparel">Shop Now →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Testimonials</span>
+          <h2>What Our Customers Say</h2>
+          <p>Join thousands of satisfied customers</p>
+        </div>
+        <div class="testimonials-slider" id="testimonialsSlider">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                Amazing quality products! The stainless steel bottle keeps my
+                water cold all day. Highly recommend Horizon!
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <img
+                src="https://randomuser.me/api/portraits/women/1.jpg"
+                alt="Customer"
+              />
+              <div>
+                <h4>Sarah Johnson</h4>
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                Fast shipping and excellent customer service. The glass bottle
+                is beautiful and durable. Will shop again!
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <img
+                src="https://randomuser.me/api/portraits/men/2.jpg"
+                alt="Customer"
+              />
+              <div>
+                <h4>Michael Chen</h4>
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                Best purchase I've made this year! The products are eco-friendly
+                and stylish. Love Horizon!
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <img
+                src="https://randomuser.me/api/portraits/women/3.jpg"
+                alt="Customer"
+              />
+              <div>
+                <h4>Emily Rodriguez</h4>
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <div class="container">
+        <div class="newsletter-content">
+          <i class="fas fa-envelope-open-text"></i>
+          <h2>Subscribe to Our Newsletter</h2>
+          <p>Get the latest updates on new products and exclusive offers</p>
+          <form id="newsletterForm" class="newsletter-form">
+            <input
+              type="email"
+              id="newsletterEmail"
+              placeholder="Enter your email"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <div class="logo">
+              <i class="fas fa-leaf"></i>
+              <span>Horizon</span>
+            </div>
+            <p>
+              Your trusted destination for premium quality products. We're
+              committed to providing the best shopping experience.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="products.html">Products</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact-us.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h3>Support</h3>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Returns Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</p>
+            <p><i class="fas fa-phone"></i> +250 792 854 755</p>
+            <p><i class="fas fa-envelope"></i> info@horizon.rw</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Horizon — modern storytelling. Crafted with
+            <i class="fas fa-heart"></i> for you.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+      <i class="fas fa-check-circle"></i>
+      <span>Message</span>
+    </div>
+
+    <script src="../scripts/home.js"></script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0; url=login.html#signup" />
+  <title>Créer un compte | FasoBestDeals</title>
+</head>
+<body>
+  <script>
+    // Switch to signup tab on login page
+    sessionStorage.setItem('fbds_auth_mode', 'signup');
+    window.location.href = 'login.html';
+  </script>
+</body>
+</html>

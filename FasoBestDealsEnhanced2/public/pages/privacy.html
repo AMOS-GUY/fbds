@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <title>Politique de Confidentialité | FasoBestDeals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/design-system.css" />
+  <style>
+    body { padding-top: var(--nav-h); background: var(--surface-1); }
+    .page-hero { background: linear-gradient(135deg, var(--brand-sand) 0%, var(--surface-0) 100%); padding: var(--space-16) 0 var(--space-10); border-bottom: 1px solid var(--border); }
+    .legal-layout { display: grid; grid-template-columns: 240px 1fr; gap: var(--space-10); padding: var(--space-12) 0 var(--space-20); align-items: start; }
+    .legal-nav { position: sticky; top: calc(var(--nav-h) + var(--space-4)); background: var(--surface-0); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+    .legal-nav-item { display: block; padding: var(--space-3) var(--space-5); font-size: var(--text-sm); color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: var(--ease); }
+    .legal-nav-item:last-child { border-bottom: none; }
+    .legal-nav-item:hover { background: var(--brand-gold-muted); color: var(--brand-gold); padding-left: var(--space-6); }
+    .legal-content { background: var(--surface-0); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: var(--space-10); }
+    .legal-content h2 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 600; margin: var(--space-8) 0 var(--space-4); padding-top: var(--space-6); border-top: 1px solid var(--border); color: var(--brand-dark); }
+    .legal-content h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .legal-content p { font-size: var(--text-base); color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4); }
+    .legal-content ul { padding-left: var(--space-6); margin-bottom: var(--space-4); }
+    .legal-content li { font-size: var(--text-base); color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-2); }
+    .legal-content strong { color: var(--text-primary); }
+    .legal-highlight { background: var(--brand-gold-muted); border-left: 3px solid var(--brand-gold); border-radius: 0 var(--radius) var(--radius) 0; padding: var(--space-4) var(--space-5); margin: var(--space-5) 0; font-size: var(--text-sm); color: var(--text-secondary); }
+    .legal-date { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--surface-2); border-radius: var(--radius-full); padding: var(--space-2) var(--space-4); font-size: var(--text-xs); color: var(--text-muted); margin-bottom: var(--space-6); }
+    @media (max-width: 768px) { .legal-layout { grid-template-columns: 1fr; } .legal-nav { position: static; display: flex; overflow-x: auto; border-radius: var(--radius-xl); } .legal-nav-item { border-bottom: none; border-right: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="home.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-gem"></i></div> FasoBestDeals</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="home.html">Accueil</a></li><li><a href="products.html">Produits</a></li>
+      <li><a href="contact-us.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="nav-auth-btn" id="navAuthBtn"><i class="fas fa-sign-in-alt"></i><span>Connexion</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label">Légal</div>
+    <h1 style="font-family:var(--font-display);font-size:var(--text-5xl);font-weight:600;letter-spacing:-.03em;margin-top:var(--space-2);">Politique de Confidentialité</h1>
+    <p style="color:var(--text-secondary);margin-top:var(--space-4);">Comment nous collectons, utilisons et protégeons vos données personnelles.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="legal-layout">
+    <nav class="legal-nav">
+      <a href="#collecte" class="legal-nav-item">1. Collecte des données</a>
+      <a href="#utilisation" class="legal-nav-item">2. Utilisation</a>
+      <a href="#partage" class="legal-nav-item">3. Partage</a>
+      <a href="#securite" class="legal-nav-item">4. Sécurité</a>
+      <a href="#droits" class="legal-nav-item">5. Vos droits</a>
+      <a href="#cookies" class="legal-nav-item">6. Cookies</a>
+      <a href="#contact-legal" class="legal-nav-item">7. Contact</a>
+    </nav>
+    <div class="legal-content">
+      <div class="legal-date"><i class="fas fa-calendar"></i> Dernière mise à jour : 1er mai 2026</div>
+      <div class="legal-highlight">
+        <strong>Résumé :</strong> Nous collectons uniquement les données nécessaires au bon fonctionnement du service. Nous ne vendons jamais vos données. Vous pouvez demander leur suppression à tout moment.
+      </div>
+
+      <h2 id="collecte"><i class="fas fa-database" style="color:var(--brand-gold);margin-right:8px;"></i> 1. Collecte des données personnelles</h2>
+      <p>FasoBestDeals collecte les informations suivantes lors de votre utilisation de notre service :</p>
+      <ul>
+        <li><strong>Données d'identité :</strong> nom, prénom lors de la création de compte ou d'une commande.</li>
+        <li><strong>Données de contact :</strong> adresse email, numéro de téléphone, adresse de livraison.</li>
+        <li><strong>Données de transaction :</strong> historique des commandes, montants, articles achetés.</li>
+        <li><strong>Données de navigation :</strong> pages visitées, durée des sessions (données agrégées, non personnalisées).</li>
+      </ul>
+      <p>Nous ne collectons pas de données bancaires — les paiements sont traités directement par Orange Money, MTN MoMo ou Moov Money.</p>
+
+      <h2 id="utilisation"><i class="fas fa-cogs" style="color:var(--brand-gold);margin-right:8px;"></i> 2. Utilisation des données</h2>
+      <p>Vos données sont utilisées exclusivement pour :</p>
+      <ul>
+        <li>Traiter et livrer vos commandes</li>
+        <li>Vous contacter concernant votre commande (statut, livraison)</li>
+        <li>Améliorer notre service et votre expérience d'achat</li>
+        <li>Vous envoyer des communications commerciales <strong>uniquement si vous y avez consenti</strong></li>
+        <li>Respecter nos obligations légales et réglementaires</li>
+      </ul>
+
+      <h2 id="partage"><i class="fas fa-share-alt" style="color:var(--brand-gold);margin-right:8px;"></i> 3. Partage des données</h2>
+      <p>Nous ne vendons, ne louons et ne partageons jamais vos données personnelles avec des tiers à des fins commerciales. Vos données peuvent être partagées uniquement avec :</p>
+      <ul>
+        <li><strong>Nos prestataires logistiques</strong> (pour la livraison de vos commandes)</li>
+        <li><strong>Les autorités compétentes</strong> si la loi l'exige</li>
+      </ul>
+
+      <h2 id="securite"><i class="fas fa-shield-alt" style="color:var(--brand-gold);margin-right:8px;"></i> 4. Sécurité des données</h2>
+      <p>Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles pour protéger vos données :</p>
+      <ul>
+        <li>Chiffrement SSL/TLS pour toutes les communications</li>
+        <li>Stockage sécurisé des données avec accès restreint</li>
+        <li>Protection contre les injections XSS et CSRF</li>
+        <li>Audit régulier de la sécurité de notre système</li>
+        <li>Formation de notre équipe aux bonnes pratiques de sécurité</li>
+      </ul>
+      <div class="legal-highlight">Les mots de passe ne sont jamais stockés en clair dans nos systèmes.</div>
+
+      <h2 id="droits"><i class="fas fa-user-shield" style="color:var(--brand-gold);margin-right:8px;"></i> 5. Vos droits</h2>
+      <p>Conformément aux réglementations applicables, vous disposez des droits suivants :</p>
+      <ul>
+        <li><strong>Droit d'accès :</strong> obtenir une copie de vos données personnelles</li>
+        <li><strong>Droit de rectification :</strong> corriger des informations inexactes</li>
+        <li><strong>Droit à l'effacement :</strong> demander la suppression de vos données</li>
+        <li><strong>Droit à la portabilité :</strong> recevoir vos données dans un format structuré</li>
+        <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données</li>
+      </ul>
+      <p>Pour exercer ces droits, contactez-nous à <a href="mailto:privacy@fasobestdeals.com" style="color:var(--brand-gold);">privacy@fasobestdeals.com</a>. Nous répondrons dans un délai de 30 jours.</p>
+
+      <h2 id="cookies"><i class="fas fa-cookie-bite" style="color:var(--brand-gold);margin-right:8px;"></i> 6. Cookies et stockage local</h2>
+      <p>Notre site utilise le stockage local (localStorage) de votre navigateur pour :</p>
+      <ul>
+        <li>Maintenir votre session de connexion</li>
+        <li>Conserver votre panier entre les visites</li>
+        <li>Mémoriser vos préférences d'affichage</li>
+      </ul>
+      <p>Vous pouvez effacer ces données à tout moment depuis les paramètres de votre navigateur. Nous n'utilisons pas de cookies tiers à des fins publicitaires.</p>
+
+      <h2 id="contact-legal"><i class="fas fa-envelope" style="color:var(--brand-gold);margin-right:8px;"></i> 7. Contact</h2>
+      <p>Pour toute question relative à cette politique de confidentialité ou à vos données personnelles :</p>
+      <ul>
+        <li><strong>Email :</strong> <a href="mailto:privacy@fasobestdeals.com" style="color:var(--brand-gold);">privacy@fasobestdeals.com</a></li>
+        <li><strong>Adresse :</strong> Ouagadougou, Burkina Faso</li>
+        <li><strong>Délai de réponse :</strong> 30 jours maximum</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2026 FasoBestDeals. Tous droits réservés.</p><div class="footer-bottom-links"><a href="privacy.html">Confidentialité</a><a href="terms.html">CGU</a></div></div></div></footer>
+<script src="../scripts/core.js"></script>
+</body>
+</html>

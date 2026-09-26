@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | FasoBestDeals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/design-system.css" />
+  <style>
+    body { padding-top: var(--nav-h); background: var(--surface-1); }
+    .page-hero { background: linear-gradient(135deg, var(--brand-sand) 0%, var(--surface-0) 100%); padding: var(--space-16) 0 var(--space-10); border-bottom: 1px solid var(--border); }
+    .faq-section { padding: var(--space-14) 0 var(--space-20); }
+    .faq-layout { display: grid; grid-template-columns: 240px 1fr; gap: var(--space-10); align-items: start; }
+    .faq-nav { position: sticky; top: calc(var(--nav-h) + var(--space-4)); background: var(--surface-0); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+    .faq-nav-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-5); font-size: var(--text-sm); font-weight: 500; color: var(--text-secondary); cursor: pointer; transition: var(--ease); border-bottom: 1px solid var(--border); }
+    .faq-nav-item:last-child { border-bottom: none; }
+    .faq-nav-item:hover, .faq-nav-item.active { background: var(--brand-gold-muted); color: var(--brand-gold); }
+    .faq-group { margin-bottom: var(--space-10); }
+    .faq-group-title { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 600; margin-bottom: var(--space-5); display: flex; align-items: center; gap: var(--space-3); }
+    .faq-group-title i { color: var(--brand-gold); }
+    .faq-item { border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: var(--space-3); overflow: hidden; background: var(--surface-0); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: var(--space-5) var(--space-6); cursor: pointer; font-weight: 500; transition: var(--ease); }
+    .faq-q:hover { background: var(--surface-1); }
+    .faq-q i { transition: transform .3s; color: var(--brand-gold); flex-shrink: 0; }
+    .faq-item.open .faq-q i { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 var(--space-6) var(--space-5); font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.75; border-top: 1px solid var(--border); padding-top: var(--space-4); }
+    .faq-item.open .faq-a { display: block; }
+    @media (max-width: 768px) { .faq-layout { grid-template-columns: 1fr; } .faq-nav { position: static; display: flex; overflow-x: auto; border-radius: var(--radius-xl); } .faq-nav-item { border-bottom: none; border-right: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="home.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-gem"></i></div> FasoBestDeals</a>
+    <ul class="nav-links" id="navLinks"><li><a href="home.html">Accueil</a></li><li><a href="products.html">Produits</a></li><li><a href="contact-us.html">Contact</a></li></ul>
+    <div class="nav-actions"><a href="login.html" class="nav-auth-btn" id="navAuthBtn"><i class="fas fa-sign-in-alt"></i><span>Connexion</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button></div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label">Support</div>
+    <h1 style="font-family:var(--font-display);font-size:var(--text-5xl);font-weight:600;letter-spacing:-.03em;margin-top:var(--space-2);">Questions Fréquentes</h1>
+    <p style="color:var(--text-secondary);margin-top:var(--space-4);font-size:var(--text-lg);">Retrouvez les réponses aux questions les plus posées sur FasoBestDeals.</p>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-layout">
+      <nav class="faq-nav">
+        <div class="faq-nav-item active"><i class="fas fa-shipping-fast"></i> Livraison</div>
+        <div class="faq-nav-item"><i class="fas fa-credit-card"></i> Paiement</div>
+        <div class="faq-nav-item"><i class="fas fa-undo"></i> Retours</div>
+        <div class="faq-nav-item"><i class="fas fa-box"></i> Commandes</div>
+        <div class="faq-nav-item"><i class="fas fa-shield-alt"></i> Sécurité</div>
+      </nav>
+      <div>
+        <div class="faq-group">
+          <div class="faq-group-title"><i class="fas fa-shipping-fast"></i> Livraison</div>
+          <div class="faq-item"><div class="faq-q">Quel est le délai de livraison ? <i class="fas fa-chevron-down"></i></div><div class="faq-a">La livraison prend généralement 15 à 20 jours ouvrables depuis la Chine vers le Burkina Faso. Ce délai peut varier selon la disponibilité du produit et les conditions douanières.</div></div>
+          <div class="faq-item"><div class="faq-q">La livraison est-elle gratuite ? <i class="fas fa-chevron-down"></i></div><div class="faq-a">La livraison est gratuite pour toute commande supérieure à 25 000 CFA. En dessous de ce montant, des frais de 2 000 CFA s'appliquent.</div></div>
+          <div class="faq-item"><div class="faq-q">Comment suivre ma commande ? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Rendez-vous sur la page <a href="track-order.html" style="color:var(--brand-gold);">Suivi de commande</a> et entrez votre numéro de commande (ex: FBD-XXXXXX) reçu par email.</div></div>
+          <div class="faq-item"><div class="faq-q">Livrez-vous dans toutes les régions du Burkina Faso ? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Nous livrons actuellement dans les principales villes du Burkina Faso : Ouagadougou, Bobo-Dioulasso, Koudougou, Banfora et d'autres. Contactez-nous pour vérifier votre zone.</div></div>
+        </div>
+        <div class="faq-group">
+          <div class="faq-group-title"><i class="fas fa-credit-card"></i> Paiement</div>
+          <div class="faq-item"><div class="faq-q">Quels modes de paiement acceptez-vous ? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Nous acceptons Orange Money, MTN MoMo, Moov Money et le paiement en espèces à la livraison. Tous les paiements mobiles sont traités de manière sécurisée.</div></div>
+          <div class="faq-item"><div class="faq-q">Le paiement en ligne est-il sécurisé ? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Oui, nous utilisons des protocoles de chiffrement SSL pour protéger toutes vos transactions. Vos données bancaires ne sont jamais stockées sur nos serveurs.</div></div>
+        </div>
+        <div class="faq-group">
+          <div class="faq-group-title"><i class="fas fa-undo"></i> Retours & Remboursements</div>
+          <div class="faq-item"><div class="faq-q">Puis-je retourner un article ? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Oui, vous disposez de 30 jours après réception pour retourner un article non utilisé dans son emballage d'origine. Contactez notre support pour initier le processus.</div></div>
+          <div class="faq-item"><div class="faq-q">Comment obtenir un remboursement ? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Une fois le retour reçu et validé, le remboursement est effectué sous 5 à 7 jours ouvrables via le même mode de paiement utilisé lors de l'achat.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2026 FasoBestDeals. Tous droits réservés.</p></div></div></footer>
+<script src="../scripts/core.js"></script>
+<script>
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
